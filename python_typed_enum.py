@@ -2,12 +2,12 @@ from enum import Enum, auto
 from types import DynamicClassAttribute
 
 
-class TypedEnum(Enum):
+class _TypedEnumBase(Enum):
     def __init_subclass__(cls):
         cls._type_value_map = []
 
 
-class TypedEnum(TypedEnum):
+class TypedEnum(_TypedEnumBase):
     def __setattr__(self, key, value):
         if value is None:
             return
